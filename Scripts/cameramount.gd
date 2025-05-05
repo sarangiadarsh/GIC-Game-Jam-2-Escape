@@ -13,10 +13,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		rotation.x -= event.relative.y *  sensitivity
 		rotation.x = clamp(rotation.x, -PI/2, PI/4)
-
-	if event.is_action_pressed("wheel_up"):
+	
+		
+	if event.is_action_pressed("wheel_up") and springarm.spring_length >1:
 		springarm.spring_length -= 1
-	if event.is_action_pressed("wheel_down"):
+	if event.is_action_pressed("wheel_down") and springarm.spring_length <9:
 		springarm.spring_length += 1
 	
 	if event.is_action_pressed("toggle_mouse_capture"):

@@ -19,7 +19,8 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 folder_colors={
 "res://Assets/": "red",
 "res://Scenes/": "green",
-"res://Scripts/": "purple"
+"res://Scripts/": "purple",
+"res://addons/": "yellow"
 }
 
 [input]
