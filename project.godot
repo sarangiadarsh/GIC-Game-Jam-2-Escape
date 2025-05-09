@@ -14,6 +14,10 @@ config/name="GIC Game Jam 2 Escape"
 run/main_scene="uid://cvals1iulcuci"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[autoload]
+
+GLOBAL="*res://Scripts/GLOBAL.gd"
+
 [file_customization]
 
 folder_colors={

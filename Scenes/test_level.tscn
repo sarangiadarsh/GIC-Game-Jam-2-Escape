@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvals1iulcuci"]
+[gd_scene load_steps=7 format=3 uid="uid://cvals1iulcuci"]
 
+[ext_resource type="Texture2D" uid="uid://boum41xa34u0o" path="res://Assets/Human_ColorPalette.png" id="1_dtjkg"]
 [ext_resource type="PackedScene" uid="uid://cano0idlydy3p" path="res://Scenes/Player.tscn" id="1_iti4p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gojnm"]
@@ -15,6 +16,13 @@ sky = SubResource("Sky_1c2mv")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iti4p"]
+albedo_texture = ExtResource("1_dtjkg")
+metallic = 1.0
+metallic_specular = 0.43
+roughness = 0.25
+uv1_triplanar = true
+
 [node name="Test level" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -29,7 +37,10 @@ environment = SubResource("Environment_f7g2b")
 [node name="CSGBox3D" type="CSGBox3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_iti4p")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_iti4p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
