@@ -1,11 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvals1iulcuci"]
+[gd_scene load_steps=17 format=3 uid="uid://cvals1iulcuci"]
 
-[ext_resource type="Texture2D" uid="uid://boum41xa34u0o" path="res://Assets/Human_ColorPalette.png" id="1_dtjkg"]
+[ext_resource type="Texture2D" uid="uid://x8fphqp2e81s" path="res://Assets/kray_grass2.png" id="1_eglq2"]
 [ext_resource type="PackedScene" uid="uid://cano0idlydy3p" path="res://Scenes/Player.tscn" id="1_iti4p"]
+[ext_resource type="Texture2D" uid="uid://cxvhw5h77v67w" path="res://Assets/cliffrock-previewbrown02.jpg" id="1_rsyfn"]
+[ext_resource type="Script" uid="uid://bk7j7ssqjqg1e" path="res://Scripts/debug.gd" id="4_rsyfn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gojnm"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+sky_top_color = Color(0.107507, 0.485618, 0.653911, 1)
+sky_horizon_color = Color(0.337064, 0.454303, 1, 1)
+sky_curve = 0.075
+ground_bottom_color = Color(0.117948, 0.493758, 0.271159, 1)
+ground_horizon_color = Color(0.680944, 0.70845, 0, 1)
+ground_curve = 0.0443828
 
 [sub_resource type="Sky" id="Sky_1c2mv"]
 sky_material = SubResource("ProceduralSkyMaterial_gojnm")
@@ -13,15 +19,51 @@ sky_material = SubResource("ProceduralSkyMaterial_gojnm")
 [sub_resource type="Environment" id="Environment_f7g2b"]
 background_mode = 2
 sky = SubResource("Sky_1c2mv")
+ambient_light_source = 3
 tonemap_mode = 2
 glow_enabled = true
+glow_normalized = true
+fog_density = 0.0005
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iti4p"]
-albedo_texture = ExtResource("1_dtjkg")
-metallic = 1.0
-metallic_specular = 0.43
-roughness = 0.25
-uv1_triplanar = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7w7ni"]
+albedo_texture = ExtResource("1_rsyfn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsyfn"]
+albedo_texture = ExtResource("1_eglq2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btda1"]
+albedo_texture = ExtResource("1_rsyfn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xq3o0"]
+albedo_texture = ExtResource("1_rsyfn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2yvf5"]
+albedo_texture = ExtResource("1_rsyfn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ihge"]
+albedo_texture = ExtResource("1_rsyfn")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7w7ni"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 0.839216)
+border_width_left = 5
+border_width_top = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="SystemFont" id="SystemFont_eglq2"]
+font_names = PackedStringArray("Dante MT Std")
+
+[sub_resource type="Theme" id="Theme_rsyfn"]
+default_font = SubResource("SystemFont_eglq2")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+Panel/styles/panel = SubResource("StyleBoxFlat_7w7ni")
 
 [node name="Test level" type="Node3D"]
 
@@ -36,11 +78,142 @@ environment = SubResource("Environment_f7g2b")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_7w7ni")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
 size = Vector3(100, 1, 100)
-material = SubResource("StandardMaterial3D_iti4p")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+material_override = SubResource("StandardMaterial3D_rsyfn")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(1000, 1, 1000)
+
+[node name="Wall1" type="CSGBox3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 10, 0)
+material_override = SubResource("StandardMaterial3D_btda1")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(1, 20, 100)
+
+[node name="Wall2" type="CSGBox3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 10, 0)
+material_override = SubResource("StandardMaterial3D_xq3o0")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(1, 20, 100)
+
+[node name="Wall3" type="CSGBox3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 50)
+material_override = SubResource("StandardMaterial3D_2yvf5")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(100, 20, 1)
+
+[node name="Wall4" type="CSGBox3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -50)
+material_override = SubResource("StandardMaterial3D_3ihge")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(100, 20, 1)
+
+[node name="Obstacles" type="Node3D" parent="floor"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="floor/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5)
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="floor/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+use_collision = true
+size = Vector3(1, 2, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="floor/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1461, 2, -4)
+use_collision = true
+size = Vector3(1, 4, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="floor/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1461, 3, -4)
+use_collision = true
+size = Vector3(1, 6, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="floor/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1461, 3, 3)
+use_collision = true
+size = Vector3(1, 8, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="floor/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, -4)
+use_collision = true
+size = Vector3(1, 3, 1)
+
+[node name="Obstacles2" type="Node3D" parent="floor"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="floor/Obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 6, 14)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(4, 1, 4)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="floor/Obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 14)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(6, 1, 6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="floor/Obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 14, 4)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(8, 1, 8)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="floor/Obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 18, -10)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(10, 1, 10)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="floor/Obstacles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, 20.5, -10)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(10, 1, 10)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_iti4p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 49.4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UserInterface" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DebugPanel" type="PanelContainer" parent="CanvasLayer/UserInterface"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 50.0
+theme = SubResource("Theme_rsyfn")
+script = ExtResource("4_rsyfn")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UserInterface/DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UserInterface/DebugPanel/MarginContainer"]
+layout_mode = 2

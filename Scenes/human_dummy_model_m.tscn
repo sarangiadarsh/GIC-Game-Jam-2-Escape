@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cmdokph7rn0y1"]
 
 [ext_resource type="PackedScene" uid="uid://d0tftbb0r8iyy" path="res://Assets/Human_DummyModel_M.fbx" id="1_a4s2c"]
-[ext_resource type="AnimationLibrary" uid="uid://c4xmn30cxi7vu" path="res://Assets/AnimPack/HumanM@Idle01.fbx" id="2_gfbdt"]
-[ext_resource type="AnimationLibrary" uid="uid://coe0h7lhqba2" path="res://Assets/AnimPack/HumanM@Jump01.fbx" id="3_ndhgh"]
-[ext_resource type="AnimationLibrary" uid="uid://dy35b3nju2eqa" path="res://Assets/AnimPack/HumanM@Sprint01_Forward.fbx" id="4_c0g54"]
-[ext_resource type="AnimationLibrary" uid="uid://bc04e3n8ne8jc" path="res://Assets/AnimPack/HumanM@Walk01_Forward.fbx" id="5_sk6c5"]
+[ext_resource type="AnimationLibrary" uid="uid://b15tsa82883tq" path="res://Assets/AnimPack/HumanM@Idle01.fbx" id="2_gfbdt"]
+[ext_resource type="AnimationLibrary" uid="uid://b58mxx6p5xwcd" path="res://Assets/AnimPack/HumanM@Jump01.fbx" id="3_ndhgh"]
+[ext_resource type="AnimationLibrary" uid="uid://bn3hydngws5kp" path="res://Assets/AnimPack/HumanM@Sprint01_Forward.fbx" id="4_c0g54"]
+[ext_resource type="AnimationLibrary" uid="uid://b1eq7v1x6sbh1" path="res://Assets/AnimPack/HumanM@Walk01_Forward.fbx" id="5_sk6c5"]
 
 [node name="Human_DummyModel_M" instance=ExtResource("1_a4s2c")]
 

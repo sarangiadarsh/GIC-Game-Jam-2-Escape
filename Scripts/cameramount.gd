@@ -8,7 +8,8 @@ func _ready() -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-				
+		GLOBAL.player.rotation.y -= event.relative.x * GLOBAL.sensitivity
+		GLOBAL.player.rotation.y =  wrapf(GLOBAL.player.rotation.y,0,2*PI)
 		rotation.x -= event.relative.y *  GLOBAL.sensitivity
 		rotation.x = clamp(rotation.x, -PI/2, PI/4)
 	
